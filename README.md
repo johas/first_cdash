@@ -20,3 +20,7 @@ git push origin name-of-branch
 To update file:
 git pull
 
+to switch branch
+git checkout -b name-of-branch
+to create local branch which pulls from remote branch
+git checkout -b name-of-local-branch remote-branch-name
