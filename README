@@ -1,0 +1,34 @@
+Adding support for submitting our test results to a dashboard is very easy. We
+already defined a number of tests for our project in the earlier steps of this
+tutorial. We just have to run those tests and submit them to a dashboard. To
+include support for dashboards we include the CTest module in our toplevel
+CMakeLists file.
+
+# enable dashboard scripting
+include (CTest)
+
+We also create a CTestConfig.cmake file where we can specify the name of this
+project for the dashboard.
+
+set (CTEST_PROJECT_NAME "Tutorial")
+
+CTest will read in this file when it runs. To create a simple dashboard you can
+run CMake on your project, change directory to the binary tree, and then run
+ctest –D Experimental. The results of your dashboard will be uploaded to
+Kitware's public dashboard here.
+
+
+create a build-directory
+For instance :
+mkdir mybuild
+cd mybuild
+cmake ..
+make
+and run application
+with
+./Tutorial number
+thest application
+make test
+or 
+ctest -R <name containing in test name>
+
