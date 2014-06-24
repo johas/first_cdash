@@ -1,0 +1,4 @@
+This branch solves the heat equation, a special form for a partial differential equation.
+It also visualizes the result and checks that the energy argument holds.
+If the explicit method is applied it checks for the stability criteria.
+Implicit will be default when ready.

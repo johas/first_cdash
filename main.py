@@ -1,7 +1,11 @@
 import sys
-sys.path.append('heat_equation')
-sys.path.append('linear_alg')
-sys.path.append('visual-effects')
+import os
+path = os.path.realpath(__file__)
+path = path.split('main.py')[0]
+print path
+sys.path.append(path+'heat_equation')
+sys.path.append(path+'linear_alg')
+sys.path.append(path+'visual-effects')
 import  heateq as ht
 import matrix_manipulation as matm
 import animatingrod as anrod
