@@ -1,8 +1,7 @@
 import sys
 import os
-path = os.path.realpath(__file__)
-path = path.split('main.py')[0]
-print path
+path = os.path.realpath(__file__).split('main.py')[0]
+#print path
 sys.path.append(path+'heat_equation')
 sys.path.append(path+'linear_alg')
 sys.path.append(path+'visual-effects')
@@ -44,6 +43,11 @@ yv = object2.y[0][:]
 #print yv
 #plt.plot(xv,yv)
 
+print object2.y[:][0].min()
+print 'minimum temperature',object2.y.min()
+print 'minimum in time 0', min(object2.y[0]), 'and where',
+np.where(object2.y == min(object2.y[0]))
+print 'Where value is negative', np.where(object2.y < 0)
 
 energy_prop(object2.y,24000,100)
 object3 = anrod.animating(object2.y,24000,xv)
