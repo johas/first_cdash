@@ -17,16 +17,26 @@ class heat_equation(object):
             print 'dt/dx^2 < 0.5 not true'
 
         else :
-            self.createMatrix(m,n)
+            #self.create_expli_Matrix(m,n)
+            self.create_impli_Matrix(m,n)
             self.initial_conditions(cond,m,n)
         
 
-    def createMatrix(self,m,n):
-        dl = du = -self.r*np.ones(n)
+    def create_expli_Matrix(self,m,n):
+        dl =  self.r*np.ones(n-1)
         d0 = (1-2.*self.r)*np.ones(n)
-        d = np.vstack((dl, d0, du))
-        self.A = sparse.spdiags(d, (-1, 0, 1), n, n)
+        self.A = np.diag(dl,-1) + np.diag(d0,0) + np.diag(dl,1)
+        #self.A = self.tridiag(dl,d0,dl)
+        #d = np.vstack((dl, d0, du))
+        #self.A = sparse.spdiags(d, (-1, 0, 1), n, n)
+        print self.A
 
+    def create_impli_Matrix(self,m,n):
+        dl =  -self.r*np.ones(n-1)
+        d0 = 2.*self.r*np.ones(n)
+        #d = np.vstack((dl, d0, du))
+        self.A = np.diag(dl,-1) + np.diag(d0,0) + np.diag(dl,1)
+        self.A = np.identity(n)+self.A
 
     def initial_conditions(self,cond,m,n):
 

@@ -43,7 +43,7 @@ yv = object2.y[0][:]
 #print yv
 #plt.plot(xv,yv)
 
-print object2.y[:][0].min()
+print 'max temperature',object2.y.max()
 print 'minimum temperature',object2.y.min()
 print 'minimum in time 0', min(object2.y[0]), 'and where',
 np.where(object2.y == min(object2.y[0]))

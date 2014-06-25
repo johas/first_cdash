@@ -7,12 +7,13 @@ class matrix_manipulation(object):
     def __init__(self,A,y,m):
         self.A = A
         self.y=y
-        #self.solve_linear(A,y)
-        self.mat_mult_time(y,m)
+        self.solve_linear(y,m)
+        #self.mat_mult_time(y,m)
         
 
-    def solve_linear(self,y):
-        np.linalg.solve(self.A, y)
+    def solve_linear(self,y,m):
+        for i in range(0,m-1) :
+            self.y[i+1][:] = np.linalg.solve(self.A, y[i])
 
     def mat_mult_time(self,y,m):
         print m
@@ -20,13 +21,15 @@ class matrix_manipulation(object):
             #print i
             j=i+1
             b= y[i][:]
-            self.y[j][:] = self.A*b
+            self.y[j][:] = self.A.dot(b)
             #d = self.A*b
             #if i == 0 :
                 #print d
                 #print 'bye'
             
             #self.y[j][:] = d
+
+
 
         
         
