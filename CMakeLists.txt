@@ -7,17 +7,17 @@ project (Python_project)
 set (EXTRA_LIBS ${EXTRA_LIBS} linear_alg)
 
 include_directories("${PROJECT_BINARY_DIR}")
-include_directories("${PROJECT_SOURCE_DIR}/heat_equation")
-add_subdirectory (heat_equation) 
-set (EXTRA_LIBS ${EXTRA_LIBS} heat_equation)
-include_directories("${PROJECT_SOURCE_DIR}/linear_alg")
-add_subdirectory (linear_alg) 
-set (EXTRA_LIBS ${EXTRA_LIBS} linear_alg)
-include_directories("${PROJECT_SOURCE_DIR}/visual-effects")
-add_subdirectory (visual-effects) 
-set (EXTRA_LIBS ${EXTRA_LIBS} visual-effects)
-link_directories("${PROJECT_SOURCE_DIR}/visual-effects",
-  "${PROJECT_SOURCE_DIR}/linear_alg", "${PROJECT_SOURCE_DIR}/heat_equation")
+#include_directories("${PROJECT_SOURCE_DIR}/heat_equation")
+#add_subdirectory (heat_equation) 
+#set (EXTRA_LIBS ${EXTRA_LIBS} heat_equation)
+#include_directories("${PROJECT_SOURCE_DIR}/linear_alg")
+#add_subdirectory (linear_alg) 
+#set (EXTRA_LIBS ${EXTRA_LIBS} linear_alg)
+#include_directories("${PROJECT_SOURCE_DIR}/visual-effects")
+#add_subdirectory (visual-effects) 
+#set (EXTRA_LIBS ${EXTRA_LIBS} visual-effects)
+#link_directories("${PROJECT_SOURCE_DIR}/visual-effects",
+#  "${PROJECT_SOURCE_DIR}/linear_alg", "${PROJECT_SOURCE_DIR}/heat_equation")
 
 
 #To enable test cases, if not add_test will not be read
