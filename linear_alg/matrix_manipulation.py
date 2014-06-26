@@ -4,12 +4,14 @@ from scipy import sparse
 
 class matrix_manipulation(object):
 
-    def __init__(self,A,y,m):
+    def __init__(self,A,y,m,scheme):
         self.A = A
         self.y=y
-        self.solve_linear(y,m)
-        #self.mat_mult_time(y,m)
-        
+        if 'implicit' in scheme: 
+            self.solve_linear(y,m)
+        if 'explicit' in scheme:
+            self.mat_mult_time(y,m)
+
 
     def solve_linear(self,y,m):
         for i in range(0,m-1) :
