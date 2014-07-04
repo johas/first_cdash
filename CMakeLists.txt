@@ -29,8 +29,14 @@ include (CTest)
 
 
 #add_custom_command(OUTPUT myout.txt COMMAND python ../main.py)
-add_custom_command(OUTPUT SET_SOURCE_FILES_PROPERTIES COMMAND python ../main.py)
+add_custom_command(OUTPUT SET_SOURCE_FILES_PROPERTIES COMMAND python ../main.py $arg1)
 
 #add_custom_target(MyDriverTarget ALL DEPENDS myout.txt)
 add_custom_target(MyDriverTarget ALL DEPENDS SET_SOURCE_FILES_PROPERTIES)
  
+
+macro (do_test _name result)
+  add_test (${_name} python main.py ${_name})
+  set_tests_properties (${_name}
+    PROPERTIES PASS_REGULAR_EXPRESSION ${result})
+endmacro (do_test)

@@ -4,7 +4,7 @@ from scipy import sparse
 
 class heat_equation(object):
 
-    def __init__(self,m,n,scheme,cond):
+    def __init__(self,m,n,scheme,cond,outfile):
         dx=1./(n+1)
         dt = 1./(m+1)
         self.dx2 = dx**2
@@ -14,8 +14,12 @@ class heat_equation(object):
         print self.r
 
         if 'explicit' in scheme:
+            outfile.write('explicit\n')
             if self.r >= 0.5 :
                 print 'Stability rquirement not fullfilled'
+                outfile.write('Stability rquirement not fullfilled\n')
+                outfile.write('dt/dx^2 < 0.5 not true\n')
+                outfile.write('Program exits\n')
                 print 'dt/dx^2 < 0.5 not true'
                 print 'Program exits'
                 sys.exit()
@@ -24,6 +28,8 @@ class heat_equation(object):
                 self.initial_conditions(cond,m,n)
                 self.create_expli_Matrix(m,n)
         if 'implicit' in scheme: 
+            outfile.write('implicit\n')
+            self.initial_conditions(cond,m,n)
             self.create_impli_Matrix(m,n)
 
         if 'implicit' not in scheme and 'explicit' not in scheme:
